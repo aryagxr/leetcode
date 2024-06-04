@@ -15,8 +15,8 @@ def longestPalindrome(s):
 
     # length of longest palindrome
     for count in char_dict.values():
-        # if length is even
-        if length % 2 == 0:
+        # if count is even
+        if count % 2 == 0:
             length += count
         else:
             length += count - 1
