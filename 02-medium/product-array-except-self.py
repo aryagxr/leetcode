@@ -5,27 +5,35 @@ Given an integer array nums, return an array answer such that answer[i]
 is equal to the product of all the elements of nums except nums[i].
 '''
 
+# O(n^2) time complexity
 def productArray(nums):
-    # [1,2,3,4] --> [24,12,8,6]
-    # length = len(nums)
-    prod = 1
     prod_array = []
-    for i in range(len(nums)-1,-1,-1):
+    for i in range(len(nums)):
+        prod = 1
         for j in range(len(nums)):
-            if nums[j] == nums[i]:
-                prod = prod * 1
-            prod = prod * nums[j]
+            if i!=j:
+                prod = prod * nums[j]
         prod_array.append(prod)
-        # nums.append(num) 
-        print(prod)
-    return prod_array[::-1]
-
-        
-        
-        
-        
+    return prod_array
 
 
-print(productArray([1,2,3,4]))
+# O(n) time complexity
+def productArray2(nums):
+    left = [1]*len(nums)
+    right = [1]*len(nums)
+    ans = [1]*len(nums)
+    for i in range(1,len(nums)):
+        left[i] = left[i-1] * nums[i-1]
+    for i in range(len(nums)-2,-1,-1):
+        right[i] = right[i+1] * nums[i+1]
+    for i in range(len(nums)):
+        ans[i] = left[i] * right[i]
+    return ans
+
+
+             
+
+
+print(productArray2([-1,1,0,-3,3]))
         
 
