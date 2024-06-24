@@ -22,3 +22,12 @@ Output: true
 Explanation: The triplet (3, 4, 5) is valid because nums[3] == 0 < nums[4] == 4 < nums[5] == 6.
 '''
 
+
+# wrong - doesn't have to be consecutive
+def tripletSeq(nums):
+    for i in range(len(nums)-2):
+        if i < i+1 < i+2 and nums[i]<nums[i+1]<nums[i+2]:
+            return True
+    return False
+
+print(tripletSeq([20,100,10,12,5,13]))

@@ -1,7 +1,7 @@
 # leetcode 75
 
 '''
-ou are given an integer array nums and an integer k.
+you are given an integer array nums and an integer k.
 
 In one operation, you can pick two numbers from the array whose sum equals k and remove them from the array.
 
@@ -25,3 +25,24 @@ Explanation: Starting with nums = [3,1,3,4,3]:
 - Remove the first two 3's, then nums = [1,4,3]
 There are no more pairs that sum up to 6, hence a total of 1 operation.
 '''
+
+def kSum(nums, k):
+    count = 0
+    while nums:
+        # goes into inf loop here
+        for j in range(1,len(nums)):
+            if nums[0] + nums[j] == k:
+                count += 1
+                x = nums[0]
+                y = nums[j]
+                nums.remove(x)
+                nums.remove(y)
+                break
+    return count
+                    
+
+print(kSum([1,2,3,4,2,2], 5))
+            
+
+
+        

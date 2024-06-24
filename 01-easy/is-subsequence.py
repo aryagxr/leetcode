@@ -16,3 +16,28 @@ Example 2:
 Input: s = "axc", t = "ahbgdc"
 Output: false
 '''
+
+
+def isSubsequence(s,t):
+    idx = []
+    true_count = 0
+    if not s:
+        return True
+    for i in range(len(s)): # ace
+        found = False
+        for j in range(len(t)):
+            if s[i] == t[j]:
+                idx.append(j)
+                found = True
+                break
+            if not found:
+                return False
+    for i in range(len(idx)-1):
+        if idx[i] <= idx[i+1]:
+            true_count+=1
+    if true_count == len(s)-1:
+        return True
+    return False
+
+        
+print(isSubsequence("","ahbgdc"))
