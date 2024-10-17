@@ -11,16 +11,16 @@ def twoSum(nums, target):
     return None
         
             
-# optimized O[]
+# optimized O[n]
             
 def two_sum(nums, target):
-    my_dict = {}
-    length = len(nums)
-    for i in range(length):
-        my_dict[nums[i]] = i
-
-    
-
+    prev_dict = {}
+    for idx, num in enumerate(nums):
+        diff = target - num
+        if diff in prev_dict:
+            return [prev_dict[diff], idx]
+        prev_dict[num] = idx
+    return
 
 
 print(two_sum([3,3],6))
